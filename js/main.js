@@ -1,4 +1,4 @@
-fetch('https://your-vercel-api-url.vercel.app/api/get-posts')
+fetch('https://blog-api-mr-lonelys-projects.vercel.app//api/get-posts')
   .then(res => res.json())
   .then(posts => {
     const container = document.getElementById('blog-list');
