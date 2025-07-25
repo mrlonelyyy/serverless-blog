@@ -11,7 +11,7 @@
   <script>
     const params = new URLSearchParams(location.search);
     const slug = params.get('slug');
-    fetch('https://your-vercel-api-url.vercel.app/api/get-posts')
+    fetch('https://blog-api-mr-lonelys-projects.vercel.app//api/get-posts')
       .then(res => res.json())
       .then(posts => {
         const post = posts.find(p => p.slug === slug);
