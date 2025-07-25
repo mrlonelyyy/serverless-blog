@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Blog Post</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="index.html">← Back to Blog List</a>
+  <div id="post-content">Loading post…</div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const slug = params.get('slug');
+    fetch('https://your-vercel-api-url.vercel.app/api/get-posts')
+      .then(res => res.json())
+      .then(posts => {
+        const post = posts.find(p => p.slug === slug);
+        if (!post) {
+          document.getElementById('post-content').innerText = 'Post not found';
+          return;
+        }
+        document.getElementById('post-content').innerHTML = `
+          <h2>${post.title}</h2>
+          <p><em>${post.date}</em></p>
+          <p>${post.content}</p>
+        `;
+      });
+  </script>
+</body>
+</html>
